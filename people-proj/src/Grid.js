@@ -1,31 +1,33 @@
 // "use client"
 import React from 'react';
-import { Component } from 'react';
-import { useState } from 'react';
-import { useRef } from 'react';
+import { useState, useEffect } from 'react';
 
-export function Grid(){
+import {Person} from './person.js'; 
+
+export function Grid({userData}){
  
-    const [personsData, setPersonsData] = useState({});
-   
-    let userInput = useRef("");
+    let users = []
 
-    console.log(  "Grid rerender --", personsData)
+    const [personsData, setPersonsData] = useState({userData});
 
-    return (
+    useEffect(() => {
+        if ( !userData.length) {
+            return
+        }
+        setPersonsData(userData);
+    }, [userData]);               
 
-        <div class="container text-center">
-        <div class="row">
-            <div class="col">
-            Column
-            </div>
-            <div class="col">
-            Column
-            </div>
-            <div class="col">
-            Column
-            </div>
-        </div>
-        </div>
-    )
+    if(personsData.length){
+
+        console.log( personsData , "Grid rerender --", userData)
+
+      return (
+        personsData.map(user => (  
+            <React.Fragment>
+            <Person user={user}/>   
+         </React.Fragment>
+                )     
+            )
+        )
+}
 }
