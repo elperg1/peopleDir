@@ -21,4 +21,5 @@ code {
 
 .container a:link {
   text-decoration: none;
+  cursor: pointer;	
 }

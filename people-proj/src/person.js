@@ -17,13 +17,13 @@ export function Person({ user }) {
 
         <div className="container">
 
-            <a onClick={() => { toPersonDetails() }}>
+            <a class="pe-auto" onClick={() => { toPersonDetails() }}>
 
                 <div className="row person-row m-1 p-1">
                     <div className="col-sm-1">
                         <img src={user.picture.thumbnail} className="img-fluid" alt="user-profile" />
                     </div>
-                    <div className="col-sm-2 pt-1">
+                    <div className="col-sm-3 pt-1">
                         {name.first} {name.last}
                     </div>
                     <div className="col-sm-1 pt-1">

@@ -38,13 +38,13 @@ export default function App() {
 
   return (
     <div className="container">
-      <header className="">
+      <header >
         <h4>People Project</h4>
       </header>
 
       <div className="container text-center">
         {loading ? (
-          <div>Loading...</div>
+          <div className="m-2">Loading...</div>
         ) : (
           <Grid userData={userData} />
         )
