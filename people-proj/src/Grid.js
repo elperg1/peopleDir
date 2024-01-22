@@ -2,32 +2,32 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 
-import {Person} from './person.js'; 
+import { Person } from './Person.js';
 
-export function Grid({userData}){
- 
+export function Grid({ userData }) {
+
     let users = []
 
-    const [personsData, setPersonsData] = useState({userData});
+    const [personsData, setPersonsData] = useState({ userData });
 
     useEffect(() => {
-        if ( !userData.length) {
+        if (!userData.length) {
             return
         }
         setPersonsData(userData);
-    }, [userData]);               
+    }, [userData]);
 
-    if(personsData.length){
-
-        console.log( personsData , "Grid rerender --", userData)
-
-      return (
-        personsData.map(user => (  
-            <React.Fragment>
-            <Person user={user}/>   
-         </React.Fragment>
-                )     
+    if (personsData.length) {
+        // console.log( personsData , "Grid rerender --", userData)
+        return (
+            personsData.map(user => (
+                <React.Fragment>
+                    <Person user={user} />
+                </React.Fragment>
             )
+          )
         )
+    }
 }
-}
+
+export default Grid

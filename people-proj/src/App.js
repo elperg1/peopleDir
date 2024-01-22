@@ -1,11 +1,12 @@
-
-
 import React, { useState, useEffect } from 'react';
 import './App.css';
 
-import {Grid} from './Grid.js'
+import { Grid } from './Grid.js'
+import { Person } from './Person.js'
 
-export function App() {
+import PersonDetails from './PersonDetails.js'
+
+export default function App() {
 
   const [userData, setUserData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -15,48 +16,43 @@ export function App() {
 
     const url = 'https://randomuser.me/api/?results=10';
 
-      let response = await fetch(url);
-      let dataResponse = await response.json();
-  
-      const users = dataResponse.results;
-      
-      setUserData(users);
-      setLoading(false);
+    let response = await fetch(url);
+    let dataResponse = await response.json();
 
+    const users = dataResponse.results;
 
-  // return { userData, loading };
+    setUserData(users);
+    setLoading(false);
+
   };
 
   useEffect(() => {
     fetchUsers();
-
   }, []);
 
   useEffect(() => {
-    userData.length ? setLoading(false): setLoading(true);
-    console.log("app data", userData, loading);              
+    userData.length ? setLoading(false) : setLoading(true);
   }, [userData, loading]);
-    
-  // const { userData, loading } = useFetch(URL);
 
-    console.log("app data", userData, loading);              
+  console.log("app data", userData, loading);
 
   return (
-    <div className="">
+    <div className="container">
       <header className="">
-       <h4>People Project</h4>
+        <h4>People Project</h4>
       </header>
-      
+
       <div className="container text-center">
         {loading ? (
-        <div>Loading...</div>
-      ) : ( 
-      <Grid userData={userData} />
-      )
+          <div>Loading...</div>
+        ) : (
+          <Grid userData={userData} />
+        )
         }
       </div>
     </div>
-  );
+  )
 }
+<PersonDetails />
 
-export default App;
+
