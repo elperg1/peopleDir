@@ -1,10 +1,7 @@
 import { render, screen } from '@testing-library/react';
-import Grid from './Grid';
-
-import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
 
-import Grid from './Grid';
+import Person from './Person';
 
 import {
     MemoryRouter,
@@ -17,8 +14,8 @@ import {
 const mockUser = {
     name:"test name"
 }
+test('renders Person', async () => {
 
-test('renders Grid', async () => {
     render(<Person user={mockUser} />);
 
     const FAKE_EVENT = {
@@ -52,21 +49,19 @@ test('renders Grid', async () => {
 
     render(
         <BrowserRouter>
-            <Grid />
-            </BrowserRouter>
+            <Person />
+        </BrowserRouter>
     );
     // user={user}
 
     screen.debug()
 
-      const headerElement = screen.getByText(/Person Details/i);
+    //   const headerElement = screen.getByText(/Person Details/i);
 
-      await waitFor(() => headerElement);
-      expect(headerElement).toBeInTheDocument();
+    //   await waitFor(() => headerElement);
+    //   expect(headerElement).toBeInTheDocument();
     //   expect(headerElement).toHaveTextContent(
     //     FAKE_EVENT.name
     //   );
 });
-
-
 

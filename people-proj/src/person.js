@@ -17,7 +17,7 @@ export function Person({ user }) {
 
         <div className="container">
 
-            <a class="pe-auto" onClick={() => { toPersonDetails() }}>
+            <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" onClick={() => { toPersonDetails() }}>
 
                 <div className="row person-row m-1 p-1">
                     <div className="col-sm-1">
@@ -29,7 +29,7 @@ export function Person({ user }) {
                     <div className="col-sm-1 pt-1">
                         {user.dob.age}
                     </div>
-                    <div className="col-sm-2 pt-1">
+                    <div className="col-sm-3 pt-1">
                         {user.location.city}
                     </div>
 

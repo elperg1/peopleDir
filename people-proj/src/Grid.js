@@ -1,12 +1,9 @@
 // "use client"
 import React from 'react';
 import { useState, useEffect } from 'react';
-
-import { Person } from './Person.js';
+import {Person} from './Person.js'
 
 export function Grid({ userData }) {
-
-    let users = []
 
     const [personsData, setPersonsData] = useState({ userData });
 
@@ -18,8 +15,7 @@ export function Grid({ userData }) {
     }, [userData]);
 
     if (personsData.length) {
-        // console.log( personsData , "Grid rerender --", userData)
-        return (
+       return (
             personsData.map(user => (
                 <React.Fragment>
                     <Person user={user} />

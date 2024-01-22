@@ -1,21 +1,24 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+export const LocationDisplay = () => {
+    
+    // return userDetails
+  }
 
 export default function PersonDetails() {
-
-    const location = useLocation();
-
-    console.log("person detail data", location);
-
-    const userDetails = location.state.user
 
     const navigate = useNavigate();
     const toPersonGrid = () => {
         navigate('/');
     }
 
+    const location = useLocation();
+    const userDetails = location.state.user
+
     const userDob = new Date(userDetails.dob.date)
+
+    console.log(userDetails,"person detail data", location);
 
     return (
         <div className='container p-2 m-2'>
@@ -53,6 +56,7 @@ export default function PersonDetails() {
             <div className="col-sm-4 pt-4">
                 <a class="pe-auto" onClick={() => { toPersonGrid() }}>Back to People Grid</a>
             </div>
+
         </div>
 
     )
