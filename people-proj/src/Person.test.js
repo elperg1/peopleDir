@@ -13,59 +13,33 @@ import {
     BrowserRouter
 } from 'react-router-dom';
 
-// const mockedUsedNavigate = jest.fn();
-
-// jest.mock('react-router-dom', () => {
-
-//   const originalModule = jest.requireActual('react-router-dom'),
-
-//    return {
-//     __esModule: true, 
-//     ...originalModule,
-//     useNavigate: () => mockedUsedNavigate,
-//   };
-  
-// });
-
 const mockUser = {
-    name:"test name"
+    name:{
+        first:"test-first-name",
+        last:"test-last-name"
+    },
+    picture:{
+        thumbnail:"x.jpg"
+    },
+    dob:{
+        age:99
+    },
+    location:{
+        city:"test-city"
+    }
 }
+
 test('renders Person', async () => {
 
-    const FAKE_EVENT = {
-        user: {
-            name: "987"
-        }
-    };
-
-   const browserRouter = createBrowserRouter([
-        {
-          path: "/",
-          element: <App />,
-          loader: () => FAKE_EVENT,
-          children: [
-            {
-              path: "/",
-              element: <Person user={mockUser}/>,
-              loader: () => FAKE_EVENT,
-            },
-          ],
-        },
-      ]);
-
     render(
-        <RouterProvider router={browserRouter} />
+        <MemoryRouter initialEntries={["/qpc?id=123"]}>
+            <Person user={mockUser}/>
+        </MemoryRouter>
     );
-    // user={user}
+  
+      const rowElement = screen.getByTestId('row-element')
 
-    // screen.debug()
-
-    //   const headerElement = screen.getByText(/Person Details/i);
-
-    //   await waitFor(() => headerElement);
-    //   expect(headerElement).toBeInTheDocument();
-    //   expect(headerElement).toHaveTextContent(
-    //     FAKE_EVENT.name
-    //   );
+      expect(rowElement).toBeInTheDocument();
+ 
 });
 

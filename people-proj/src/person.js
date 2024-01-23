@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export function Person({ user }) {
 
     const name = user.name
-    
+
     console.log("Person rerender --", user)
 
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ export function Person({ user }) {
 
             <a class="link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover" onClick={() => { toPersonDetails() }}>
 
-                <div className="row person-row m-1 p-1">
+                <div className="row person-row m-1 p-1" data-testid="row-element">
                     <div className="col-sm-1">
                         <img src={user.picture.thumbnail} className="img-fluid" alt="user-profile" />
                     </div>
