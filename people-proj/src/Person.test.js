@@ -1,36 +1,42 @@
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
 
-import Person from './Person';
+import Person from './Person.js';
+import App from './App';
 
 import {
     MemoryRouter,
     createMemoryRouter,
+    createBrowserRouter,
     RouterProvider,
     useNavigate,
     BrowserRouter
 } from 'react-router-dom';
+
+// const mockedUsedNavigate = jest.fn();
+
+// jest.mock('react-router-dom', () => {
+
+//   const originalModule = jest.requireActual('react-router-dom'),
+
+//    return {
+//     __esModule: true, 
+//     ...originalModule,
+//     useNavigate: () => mockedUsedNavigate,
+//   };
+  
+// });
 
 const mockUser = {
     name:"test name"
 }
 test('renders Person', async () => {
 
-    render(<Person user={mockUser} />);
-
     const FAKE_EVENT = {
         user: {
             name: "987"
         }
     };
-
-    const routes = [
-        {
-            path: "/",
-            element: <Person />,
-            loader: () => FAKE_EVENT,
-        },
-    ];
 
    const browserRouter = createBrowserRouter([
         {
@@ -40,7 +46,7 @@ test('renders Person', async () => {
           children: [
             {
               path: "/",
-              element: <Person />,
+              element: <Person user={mockUser}/>,
               loader: () => FAKE_EVENT,
             },
           ],
@@ -48,13 +54,11 @@ test('renders Person', async () => {
       ]);
 
     render(
-        <BrowserRouter>
-            <Person />
-        </BrowserRouter>
+        <RouterProvider router={browserRouter} />
     );
     // user={user}
 
-    screen.debug()
+    // screen.debug()
 
     //   const headerElement = screen.getByText(/Person Details/i);
 

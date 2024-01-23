@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export function Person({ user }) {
 
     const name = user.name
+    
     console.log("Person rerender --", user)
 
     const navigate = useNavigate();

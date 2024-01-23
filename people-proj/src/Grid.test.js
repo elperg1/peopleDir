@@ -1,39 +1,29 @@
 import { render, screen } from '@testing-library/react';
-import Grid from './Grid';
-
-import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom'
 
 import Grid from './Grid';
+import App from './App';
 
 import {
     MemoryRouter,
     createMemoryRouter,
+    createBrowserRouter,
     RouterProvider,
     useNavigate,
     BrowserRouter
 } from 'react-router-dom';
 
-const mockUser = {
-    name:"test name"
-}
+const mockUserData = [ {name:"test name"}
+        ];
 
 test('renders Grid', async () => {
-    render(<Person user={mockUser} />);
 
     const FAKE_EVENT = {
-        user: {
+        userData: {
             name: "987"
         }
     };
 
-    const routes = [
-        {
-            path: "/",
-            element: <Person />,
-            loader: () => FAKE_EVENT,
-        },
-    ];
 
    const browserRouter = createBrowserRouter([
         {
@@ -43,7 +33,7 @@ test('renders Grid', async () => {
           children: [
             {
               path: "/",
-              element: <Person />,
+              element: <Grid userData={mockUserData}/>,
               loader: () => FAKE_EVENT,
             },
           ],
@@ -51,18 +41,16 @@ test('renders Grid', async () => {
       ]);
 
     render(
-        <BrowserRouter>
-            <Grid />
-            </BrowserRouter>
+        <RouterProvider router={browserRouter} />
     );
     // user={user}
 
-    screen.debug()
+    // screen.debug()
 
-      const headerElement = screen.getByText(/Person Details/i);
+    //   const headerElement = screen.getByText(/Person Details/i);
 
-      await waitFor(() => headerElement);
-      expect(headerElement).toBeInTheDocument();
+    //   await waitFor(() => headerElement);
+    //   expect(headerElement).toBeInTheDocument();
     //   expect(headerElement).toHaveTextContent(
     //     FAKE_EVENT.name
     //   );

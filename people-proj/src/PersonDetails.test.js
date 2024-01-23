@@ -19,19 +19,6 @@ test('renders PersonDetails', async () => {
         }
     };
 
-    const routes = [
-        {
-            path: "PersonDetails",
-            element: <PersonDetails />,
-            loader: () => FAKE_EVENT,
-        },
-    ];
-
-    // const router = createMemoryRouter(routes, {
-    //     initialEntries: ["/", "PersonDetails"],
-    //     initialIndex: 1,
-    // });
-
    const browserRouter = createBrowserRouter([
         {
           path: "/",

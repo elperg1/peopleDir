@@ -7,6 +7,8 @@ export function Grid({ userData }) {
 
     const [personsData, setPersonsData] = useState({ userData });
 
+    console.log("grid rerender --", userData)
+
     useEffect(() => {
         if (!userData.length) {
             return
